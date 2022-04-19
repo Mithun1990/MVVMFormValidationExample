@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MVVMFormValidationExample</string>
+    <string name="required_field">Required field.</string>
+</resources>
