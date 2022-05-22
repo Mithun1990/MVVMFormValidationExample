@@ -17,12 +17,17 @@ class BasicFormViewModel : ViewModel() {
 
     fun isFormValid(): Boolean {
         formErrors.clear()
-        if (information.value?.name.isNullOrEmpty())
-            formErrors.add(FormError.REQUIRED_NAME)
-        if (information.value?.email.isNullOrEmpty())
-            formErrors.add(FormError.REQUIRED_EMAIL)
-        if (information.value?.password.isNullOrEmpty())
-            formErrors.add(FormError.REQUIRED_PASSWORD)
+        information.value?.let {
+            if (it.validateName() != FormError.NO_ERROR) {
+                formErrors.add(it.validateName())
+            }
+            if (it.validateEmail() != FormError.NO_ERROR) {
+                formErrors.add(it.validateEmail())
+            }
+            if (it.validatePassword() != FormError.NO_ERROR) {
+                formErrors.add(it.validatePassword())
+            }
+        }
         return formErrors.isEmpty()
     }
 
@@ -31,6 +36,7 @@ class BasicFormViewModel : ViewModel() {
         REQUIRED_EMAIL,
         REQUIRED_PASSWORD,
         INVALID_EMAIL,
-        INVALID_PASSWORD
+        INVALID_PASSWORD,
+        NO_ERROR
     }
 }

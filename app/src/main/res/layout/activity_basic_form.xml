@@ -33,7 +33,6 @@
                 requiredErrorText="@{vm.formErrors.contains(FormError.REQUIRED_NAME)}"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:errorEnabled="true"
                 app:hintTextColor="@color/cardview_dark_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
